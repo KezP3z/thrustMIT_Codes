@@ -23,14 +23,12 @@ int ctr = 0;
 
 const int windowSize = 10;
 
-
 File all_Data;
 
 float seaLevelPressure = 1013.25;
 
 #define P_CS_PIN 53  // Chip Select pin for LPS22HB
 
-// LPS22HB Register Addresses
 #define P_WHO_AM_I 0x0F
 #define P_CTRL_REG1 0x10
 #define PRESS_OUT_XL 0x28
@@ -41,9 +39,9 @@ float seaLevelPressure = 1013.25;
 #define IMU_WHO_AM_I_REG 0x0F
 #define IMU_LSM6DSO32_WHO_AM_I 0x6C
 
-#define IMU_CTRL1_XL 0x10 //ODR selection and scaling selection for acceleration
-#define IMU_CTRL2_G 0x11 //ODR selection and scaling selection for acceleration
-#define IMU_CTRL6_C 0x15 //
+#define IMU_CTRL1_XL 0x10
+#define IMU_CTRL2_G 0x11
+#define IMU_CTRL6_C 0x15
 #define IMU_CTRL7_G 0x16
 
 #define IMU_OUTX_L_G 0x22 // gyroscope output regs
@@ -144,10 +142,10 @@ void SPI_ReadRegisters(uint8_t reg, uint8_t *buffer, uint8_t len) {
 
 
 byte readRegister(byte reg) {
-  digitalWrite(IMU_CS_PIN, LOW); // Select BMP388
-  SPI.transfer(reg | 0x80);         // Read command (MSB=1 for read)
-  byte value = SPI.transfer(0x00);  // Send dummy byte to read
-  digitalWrite(IMU_CS_PIN, HIGH); // Deselect BMP388
+  digitalWrite(IMU_CS_PIN, LOW); 
+  SPI.transfer(reg | 0x80);         
+  byte value = SPI.transfer(0x00); 
+  digitalWrite(IMU_CS_PIN, HIGH); 
   return value;
 }
 
