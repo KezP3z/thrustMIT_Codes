@@ -34,7 +34,7 @@ press_points= np.array(press_array)
 
 #plt.plot(timepoints,velocitypoints)
 #plt.plot(timepoints, acct_points)
-#plt.plot(timepoints,press_points)
+#plt.plot(timepoints,press_points) #remove comments to plot velocity
 
 min_pressure = df['pressure_smoothed'].min()
 print(min_pressure)
